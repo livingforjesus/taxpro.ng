@@ -13,6 +13,7 @@
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
     "start": "next start",
+    "db": "trap 'docker compose stop' EXIT; docker compose up --build",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

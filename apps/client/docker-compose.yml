@@ -1,0 +1,25 @@
+name: taxpro
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: taxpro-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: taxpro
+      MYSQL_DATABASE: taxpro
+      MYSQL_USER: taxpro
+      MYSQL_PASSWORD: taxpro
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+    driver: local
